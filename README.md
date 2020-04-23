@@ -26,6 +26,54 @@ for disambiguation.
 | --port | Specify the port to use for the node-inspect protocol. Default: auto |
 | -w     | Pause on startup, so you can set breakpoints |
 
+| Environment Variable | Behaviour |
+|:---------------------|:----------|
+| NIIM_DEFAULT_PORT    | Specify the default port to use for the node-inspect protocol. |
+
+#### Using
+| New Command         | Behaviour |
+|:--------------------|-----------|
+| send(string)        | Send the string to the attached process' stdin |
+| sendFile(filename)  | Send the named file to the attached process' stdin |
+| type()              | Suspend the REPL and enter interactive termimal line mode |
+| type(true)          | Suspend the REPL and enter interactive terminal character mode |
+| pipe()              | Suspend the REL and connect the debugger's stdin to the attached process' stdin until 
+                        the debugger (attached process' parent process) receives SIGUSR1. |
+
+#### Features
+*Interactive Terminal Mode*
+This feature is the /raison d'être for this fork, as our team frequently finds itself needing to enter
+passphrases during our debugging sessions.
+
+In this mode, the REPL is suspended and the debugger's stdin is fed to the attached process. If the attached
+process is in raw mode, the debugger's terminal will also be set in raw mode.  During interactive terminal
+mode, the debugger will also not print `<` symbols in front of the attached process' stdout.
+
+If the attached process' stdin is in raw mode, or enters raw mode, the debugger will remain in interactive
+terminal mode until the attached process' stdin exits raw mode, or the debugger receives SIGUSR1.
+
+The niim preloader communicates with niim using its own protocol, over the attached process' stdout. All
+messages are of the form <NUL>{json}<NUL>.  If the attached process writes a <NUL>, it is escaped with
+a second <NUL>
+
+To facilitate this mode, the niim preloader monkey-patches the following APIs in the attached process:
+* process.stdin.setRawMode()
+* process.stdin.isRaw
+* process.stdin.isTTY
+* process.stdout.write()
+
+It is *very important* that a process under debugging only is the stdout Stream interface for writing
+to stdout if the data written can contain <NUL> characters.
+
+*niim module*
+The internal module `require("niim")` is supplied to the attached process via the niim preloader. This
+library allows for niim-aware debug targets to interoperate with niim directly.
+
+| Module export       | Behaviour |
+|:--------------------|-----------|
+| itm(boolean)        | true - enter interactive terminal mode.
+                        false - exit interactive terminal mode. |
+
 #### Other Debuggers
 The fork root, node-inspect, is maintained by the NodeJS team. This is the 
 debugger you launch with `node debug file`. The latest version of node-inspect
