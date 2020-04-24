@@ -2,6 +2,17 @@
 
 🎉🏅 Thanks for helping us improve this project! 🙏
 
+99% of the code in this repository is from the node-inspect project.
+If you want to improve the node inspector in general, contribute to that
+project; if your changes are picked up by the mainline, we will eventually
+merge them in.  The document below tells you how to contribute to do that.
+
+If you are interested in contributing to niim, keep it surgical and file
+a bug, make a pull request, or simply email wes@kingsds.network. "Keep it surgical"
+means that you should make very, very, very few changes to the files which
+aren't part of niim.  I don't want to branch too far off the mainline.
+
+-----------------------------------------------------------------
 This document outlines some of the practices we care about.
 If you have any questions or suggestions about the process,
 feel free to [open an issue](#reporting-issues).
