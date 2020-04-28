@@ -35,10 +35,7 @@ for disambiguation.
 |:--------------------|-----------|
 | send(string)        | Send the string to the attached process' stdin |
 | sendFile(filename)  | Send the named file to the attached process' stdin |
-| type()              | Suspend the REPL and enter interactive termimal line mode |
-| type(true)          | Suspend the REPL and enter interactive terminal character mode |
-| pipe()              | Suspend the REL and connect the debugger's stdin to the attached process' stdin until 
-                        the debugger (attached process' parent process) receives SIGUSR1. |
+| ctty                | Suspend the REPL and enter interactive termimal mode |
 
 #### Features
 *Interactive Terminal Mode*
@@ -56,11 +53,9 @@ The niim preloader communicates with niim using its own protocol, over the attac
 messages are of the form <NUL>{json}<NUL>.  If the attached process writes a <NUL>, it is escaped with
 a second <NUL>
 
-To facilitate this mode, the niim preloader monkey-patches the following APIs in the attached process:
-* process.stdin.setRawMode()
-* process.stdin.isRaw
-* process.stdin.isTTY
-* process.stdout.write()
+To facilitate this mode, the niim preloader monkey-patches and otherwise tries to virtualize APIs
+on process.stdin and process.stdout. Setting DEBUG_NIIM and/or DEBUG_NIIM_PRELOAD can yield insight
+into the under-the-hood behaviour if strange things are happening for you.
 
 It is *very important* that a process under debugging only is the stdout Stream interface for writing
 to stdout if the data written can contain <NUL> characters.
@@ -73,6 +68,15 @@ library allows for niim-aware debug targets to interoperate with niim directly.
 |:--------------------|-----------|
 | itm(boolean)        | true - enter interactive terminal mode.
                         false - exit interactive terminal mode. |
+
+#### Configuration Files
+niim ships with a niim.config master configuration in the etc/ directory of the package to describe all
+of the configuration options and their defaults. The config files are read in the following order; the
+last file read that sets a given property has precedence:
+ - etc/niim.config
+ - ~/.niim/config
+ - ~/.niim/programs/your-program-name.config
+ - filename passed with --config=
 
 #### Other Debuggers
 The fork root, node-inspect, is maintained by the NodeJS team. This is the 
