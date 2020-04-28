@@ -21,16 +21,21 @@ for disambiguation.
 #### Launching
 ```niim [options] <filename to debug>```
 
-| Option | Behaviour |
-|:-------|:----------|
-| --port | Specify the port to use for the node-inspect protocol. Default: auto |
-| -w     | Pause on startup, so you can set breakpoints |
+| Option         | Behaviour |
+|:---------------|:----------|
+| --config-file= | Specify an additional config file (overlays etc/config) |
+| --port         | Specify the port to use for the node-inspect protocol. Default: auto |
+| --host         | Specify the hostname to use for the node-inspect protocol. Default: localhost |
 
 | Environment Variable | Behaviour |
 |:---------------------|:----------|
-| NIIM_DEFAULT_PORT    | Specify the default port to use for the node-inspect protocol. |
+| NIIM_CONFIG_FILE     | Specify an additional config file (overlays etc/config) |
+| NIIM_DEFAULT_PORT    | Specify the default port to use for the node-inspect protocol. Default: auto |
 
-#### Using
+#### Debugging with niim
+All of the commands from `node-inspect` work as usual.  If you are on an older version
+of NodeJS, you might find that they work better than usual. :)
+
 | New Command         | Behaviour |
 |:--------------------|-----------|
 | send(string)        | Send the string to the attached process' stdin |
@@ -78,6 +83,14 @@ last file read that sets a given property has precedence:
  - ~/.niim/config
  - ~/.niim/your-program-name.config
  - filename passed with --config=
+
+##### Enabling Autostart
+If your work flow does not involve setting breakpoints the moment `niim` launches, you might like to
+enable autostart; this feature skips the first `niim> ` prompt and starts running the attached process
+right away.
+
+To enable autostart globally, set `niim.autostart=true` in ~/.niim/config.  To enable it only when 
+debugging a program named XYZ, set `niim.autostart=true` in ~/.niim/XYZ.config.
 
 #### Other Debuggers
 The fork root, node-inspect, is maintained by the NodeJS team. This is the 
