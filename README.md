@@ -9,9 +9,9 @@ This project is a fork of the node-inspect project.  The goal is simple: to
 scratch my own itches with respect to debugging command-line apps on NodeJS,
 especially logged in via ssh.
 
-#### Changes
+#### Major Functional Changes
 * Can debug processes that require input on stdin
-* Avoid startup pause by default
+* Avoid startup pause can be disabled by default via config on a per-target basis
 * Use randomized inspect port by default
 * REPL history is maintained
 
@@ -74,8 +74,9 @@ niim ships with a niim.config master configuration in the etc/ directory of the 
 of the configuration options and their defaults. The config files are read in the following order; the
 last file read that sets a given property has precedence:
  - etc/niim.config
+ - etc/your-program-name.config
  - ~/.niim/config
- - ~/.niim/programs/your-program-name.config
+ - ~/.niim/your-program-name.config
  - filename passed with --config=
 
 #### Other Debuggers
