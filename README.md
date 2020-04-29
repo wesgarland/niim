@@ -11,10 +11,10 @@ especially logged in via ssh.
 
 Specifically, my work on DCP, a platform for doing massively-parallel computation in
 JavaScript, has been frustrated by the lack of a text-ui debugger which works with
-ort library that unlocks Ethereum keystores. See [Distributed.Computer](https://distributed.computer/) for
+out library that unlocks Ethereum keystores. See [Distributed.Computer](https://distributed.computer/) for
 more information if you're curious about that.
 
-### Major Functional Changes
+### Major Functional Differences From Node-Inspect
 * Can debug processes that require input on stdin
 * Avoid startup pause can be disabled by default via config on a per-target basis
 * Use randomized inspect port by default
@@ -27,8 +27,8 @@ for disambiguation.
 This fork is barely past the "proof of concept" stage. Please be aware that it is
 barely tested on my machine, let alone yours.  I'm running Node 10.20 on Linux x86_64.
 
-### Launching
-```niim [options] <filename to debug>```
+### Launching Niim
+```niim [options] ‹filename to debug›```
 
 | Option         | Behaviour |
 |:---------------|:----------|
@@ -49,7 +49,7 @@ of NodeJS, you might find that they work better than usual. :)
 |:--------------------|:----------|
 | send(string)        | Send the string to the attached process' stdin |
 | sendFile(filename)  | Send the named file to the attached process' stdin |
-| pipe(fd | command)  | Send the data on the pipeline to the attach process' stdin |
+| pipe(fd or command) | Send the data on the pipeline to the attach process' stdin |
 | ctty                | Suspend the REPL and enter interactive termimal mode |
 
 There is also a [FAQ](./FAQ.md) in this directory which goes into more detail.
@@ -61,21 +61,18 @@ passphrases during our debugging sessions.
 
 In this mode, the REPL is suspended and the debugger's stdin is fed to the attached process. If the attached
 process is in raw mode, the debugger's terminal will also be set in raw mode.  During interactive terminal
-mode, the debugger will also not print `<` symbols in front of the attached process' stdout.
-
-If the attached process' stdin is in raw mode, or enters raw mode, the debugger will remain in interactive
-terminal mode until the attached process' stdin exits raw mode, or the debugger receives SIGUSR1.
+mode, the debugger will also not print `‹` symbols in front of the attached process' stdout.
 
 The niim preloader communicates with niim using its own protocol, over the attached process' stdout. All
-messages are of the form <NUL>{json}<NUL>.  If the attached process writes a <NUL>, it is escaped with
-a second <NUL>.
+messages are of the form NUL{json}NUL.  If the attached process writes a NUL, it is escaped with
+a second NUL.
 
 To facilitate this mode, the niim preloader monkey-patches and otherwise tries to virtualize APIs
 on process.stdin and process.stdout. Setting DEBUG_NIIM and/or DEBUG_NIIM_PRELOAD can yield insight
 into the under-the-hood behaviour if strange things are happening for you.
 
 It is *very important* that a process under debugging only use the stdout Stream interface for writing
-to stdout if the data written can contain <NUL> characters.
+to stdout if the data written can contain NUL characters.
 
 #### niim module
 The internal module `require("niim")` is supplied to the attached process via the niim preloader. This
@@ -97,7 +94,7 @@ last file read that sets a given property has precedence:
 
 #### Enabling Autostart
 If your work flow does not involve setting breakpoints the moment `niim` launches, you might like to
-enable autostart; this feature skips the first `niim> ` prompt and starts running the attached process
+enable autostart; this feature skips the first `niim› ` prompt and starts running the attached process
 right away.
 
 To enable autostart globally, set `niim.autostart=true` in ~/.niim/config.  To enable it only when 
