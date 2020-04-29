@@ -13,11 +13,11 @@ connect niim's controlling tty to the attached process; press Control-C to retur
 *Question from [Stack Overflow](https://stackoverflow.com/questions/6889470/how-to-programmatically-detect-debug-mode-in-nodejs)*
 
 ```javascript
-let nimm;
+let niim;
 try {
-  nimm = require('niim');
+  niim = require('niim');
 } catch(e) {}
-if (nimm) {
+if (niim) {
   console.log('niim loaded');
 }
 ```
@@ -35,7 +35,22 @@ password has been entered.  Next, edit the niim config file corresponding to thi
 ```javascript
 niim.autoRawITM = true;
 ```
-This will cause nimm to automatically drop into interactive terminal mode when your program is prompting for a password.
+This will cause niim to automatically drop into interactive terminal mode when your program is prompting for a password.
+
+If that does not give you enough control, your program can make niim enter and exit interactive terminal mode at will,
+via `require('niim').itm(true or false)`. *Note:* `require('niim')` will throw an exception when your program is running
+without niim.
+
+```javascript
+try {
+  var niim = require('niim');
+} catch(e){};
+
+if (niim) {
+  niim.itm(true);
+  setTimeout(() => niim.itm(false), 3000);
+}
+```
 
 ### Where is the niim config file for my program?
 If your home directory is `/users/JohnDoe` and program is named `/var/hello/world.js`, then niim will read the config file
@@ -47,6 +62,6 @@ Yes. If your home directory is `/users/JohnDoe`, then niim will read use the con
 they are all read in order of least- to most-specific. Kind of like CSS rule matching.
 
 ### Where can I find all the configuration parameters for niim?
-See /path/to/nimm/etc/config, or https://github.com/wesgarland/niim/blob/master/etc/config
+See /path/to/niim/etc/config, or https://github.com/wesgarland/niim/blob/master/etc/config
 
 
