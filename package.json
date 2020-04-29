@@ -16,6 +16,7 @@
     "url": "https://github.com/wesgarland/niim/issues"
   },
   "scripts": {
+    "postpublish": "PACKAGE_VERSION=$(cat package.json | grep \\\"version\\\" | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && git tag v$PACKAGE_VERSION && git push --tags",
     "pretest": "eslint --rulesdir=tools/eslint-rules lib test",
     "test": "tap test",
     "posttest": "nlm verify"
