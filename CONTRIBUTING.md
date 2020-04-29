@@ -3,7 +3,7 @@
 🎉🏅 Thanks for helping us improve this project! 🙏
 
 99% of the code in this repository is from the node-inspect project.
-If you want to improve the node inspector in general, contribute to that
+If you want to improve the node debugger in general, contribute to that
 project; if your changes are picked up by the mainline, we will eventually
 merge them in.  The document below tells you how to do that.
 
