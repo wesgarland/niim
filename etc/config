@@ -1,10 +1,11 @@
 /* Master niim config file. All options are set to their default values here. */
 {
-  autostart: false,      /* if true, launching niim starts debugging immediately */
-  host: '127.0.0.1',     /* default hostname for node-inspector protocol */
-  port: 0,               /* default port number for node-inspector protocol; 0=random */
-  prompt: 'niim',        /* prompt shown for the debugger repl */
-  colors: undefined,     /* true or false to force to use or not use colours, otherwise detect */
-  autoRawITM: false,     /* if true, niim will enter interactive terminal mode when stdout switches to raw mode */
-  allowRemote: true      /* if true, the attached process will be able to use require('niim') to manipulate the debugger */
+  autostart: false,             /* if true, launching niim starts debugging immediately */
+  host: '127.0.0.1',            /* default hostname for node-inspector protocol */
+  port: 0,                      /* default port number for node-inspector protocol; 0=random */
+  prompt: 'niim',               /* prompt shown for the debugger repl */
+  colors: undefined,            /* true or false to force to use or not use colours, otherwise detect */
+  autoRawITM: false,            /* if true, niim will enter interactive terminal mode when stdout switches to raw mode */
+  allowRemote: true,            /* if true, the attached process will be able to use require('niim') to manipulate the debugger */
+  compatDisconnect: false,      /* if true, parse child stdin text to determine when the debugger disconnected */
 }
