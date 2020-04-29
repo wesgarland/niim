@@ -49,6 +49,7 @@ of NodeJS, you might find that they work better than usual. :)
 |:--------------------|:----------|
 | send(string)        | Send the string to the attached process' stdin |
 | sendFile(filename)  | Send the named file to the attached process' stdin |
+| pipe(fd | command)  | Send the data on the pipeline to the attach process' stdin |
 | ctty                | Suspend the REPL and enter interactive termimal mode |
 
 There is also a [FAQ](./FAQ.md) in this directory which goes into more detail.
