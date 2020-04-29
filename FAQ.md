@@ -35,6 +35,7 @@ password has been entered.  Next, edit the niim config file corresponding to thi
 ```javascript
 niim.autoRawITM = true;
 ```
+This will cause nimm to automatically drop into interactive terminal mode when your program is prompting for a password.
 
 ### Where is the niim config file for my program?
 If your home directory is `/users/JohnDoe` and program is named `/var/hello/world.js`, then niim will read the config file
