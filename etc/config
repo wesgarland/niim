@@ -8,4 +8,6 @@
   autoRawITM: false,            /* if true, niim will enter interactive terminal mode when stdout switches to raw mode */
   allowRemote: true,            /* if true, the attached process will be able to use require('niim') to manipulate the debugger */
   compatDisconnect: false,      /* if true, parse child stdin text to determine when the debugger disconnected */
+  history: '~/.niim/history',   /* false to disable; name of the file the REPL history gets saved in. Also NIIM_REPL_HISTORY. */
+  historySize: 1000,		/* how many lines of history to persist. Also NIIM_REPL_HISTORY_SIZE. */
 }
