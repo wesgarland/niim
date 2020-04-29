@@ -1,3 +1,6 @@
+# niim Project Governance
+See: `/dev/null`
+
 # node-inspect Project Governance
 
 The node-inspect project is governed by the Node.js Diagnostics WG as described

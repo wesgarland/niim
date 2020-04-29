@@ -9,6 +9,11 @@ This project is a fork of the node-inspect project.  The goal is simple: to
 scratch my own itches with respect to debugging command-line apps on NodeJS,
 especially logged in via ssh.
 
+Specifically, my work on DCP, a platform for doing massively-parallel computation in
+JavaScript, has been frustrated by the lack of a text-ui debugger which works with
+ort library that unlocks Ethereum keystores. See [Distributed.Computer]https://distributed.computer/ for
+more information if you're curious about that.
+
 #### Major Functional Changes
 * Can debug processes that require input on stdin
 * Avoid startup pause can be disabled by default via config on a per-target basis
@@ -17,6 +22,10 @@ especially logged in via ssh.
 
 The plan for version numbers is to track node-inspect, with letter suffixes 
 for disambiguation.
+
+#### Release Status
+This fork is barely past the "proof of concept" stage. Please be aware that it is
+barely tested on my machine, let alone yours.  I'm running Node 10.20 on Linux x86_64.
 
 #### Launching
 ```niim [options] <filename to debug>```
@@ -43,8 +52,8 @@ of NodeJS, you might find that they work better than usual. :)
 | ctty                | Suspend the REPL and enter interactive termimal mode |
 
 #### Features
-*Interactive Terminal Mode*
-This feature is the /raison d'être for this fork, as our team frequently finds itself needing to enter
+#####Interactive Terminal Mode
+This feature is the *raison d'être* for this fork, as our team frequently finds itself needing to enter
 passphrases during our debugging sessions.
 
 In this mode, the REPL is suspended and the debugger's stdin is fed to the attached process. If the attached
@@ -56,13 +65,13 @@ terminal mode until the attached process' stdin exits raw mode, or the debugger 
 
 The niim preloader communicates with niim using its own protocol, over the attached process' stdout. All
 messages are of the form <NUL>{json}<NUL>.  If the attached process writes a <NUL>, it is escaped with
-a second <NUL>
+a second <NUL>.
 
 To facilitate this mode, the niim preloader monkey-patches and otherwise tries to virtualize APIs
 on process.stdin and process.stdout. Setting DEBUG_NIIM and/or DEBUG_NIIM_PRELOAD can yield insight
 into the under-the-hood behaviour if strange things are happening for you.
 
-It is *very important* that a process under debugging only is the stdout Stream interface for writing
+It is *very important* that a process under debugging only use the stdout Stream interface for writing
 to stdout if the data written can contain <NUL> characters.
 
 *niim module*

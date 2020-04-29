@@ -4,14 +4,14 @@
   "description": "Node Inspect IMproved",
   "license": "MIT",
   "main": "lib/_inspect.js",
-  "bin": "cli.js",
-  "homepage": "https://github.com/wesgarland/node-inspect",
+  "bin": "niim",
+  "homepage": "https://github.com/wesgarland/niim",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/wesgarland/node-inspect"
+    "url": "git+ssh://git@github.com/wesgarland/niim"
   },
   "bugs": {
-    "url": "https://github.com/wesgarland/node-inspect/issues"
+    "url": "https://github.com/wesgarland/niim/issues"
   },
   "scripts": {
     "pretest": "eslint --rulesdir=tools/eslint-rules lib test",
