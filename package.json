@@ -1,14 +1,16 @@
 {
   "name": "niim",
-  "version": "1.11.6a",
+  "version": "1.11.6-b",
   "description": "Node Inspect IMproved",
   "license": "MIT",
   "main": "lib/_inspect.js",
-  "bin": "niim",
+  "bin": {
+    "niim": "niim"
+  },
   "homepage": "https://github.com/wesgarland/niim",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/wesgarland/niim"
+    "url": "git+ssh://git@github.com/wesgarland/niim.git"
   },
   "bugs": {
     "url": "https://github.com/wesgarland/niim/issues"
@@ -31,15 +33,24 @@
     "nlm": "^3.0.0",
     "tap": "^10.7.0"
   },
-  "author": {
-    "name": "Wes Garland",
-    "email": "wes@kingsds.network"
-  },
+  "author": "Wes Garland <wes@kingsds.network>",
   "files": [
     "*.js",
-    "lib"
+    "lib",
+    "etc"
   ],
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
-  }
+  },
+  "directories": {
+    "example": "examples",
+    "lib": "lib",
+    "test": "test"
+  },
+  "keywords": [
+    "cli-debugger",
+    "cli",
+    "debugger",
+    "node-inspect"
+  ]
 }
