@@ -129,6 +129,7 @@ function startCLI(args, flags = [], spawnOpts = {}) {
     },
 
     completer(input) {
+      this.flushOutput();
       if (!input) {
         return this.writeLine('.completer');
       }
