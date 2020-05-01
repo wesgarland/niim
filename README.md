@@ -11,7 +11,7 @@ especially logged in via ssh.
 
 Specifically, my work on DCP, a platform for doing massively-parallel computation in
 JavaScript, has been frustrated by the lack of a text-ui debugger which works with
-out library that unlocks Ethereum keystores. See [Distributed.Computer](https://distributed.computer/) for
+our library that unlocks Ethereum keystores. See [Distributed.Computer](https://distributed.computer/) for
 more information if you're curious about that.
 
 ### Major Functional Differences From Node-Inspect
