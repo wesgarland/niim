@@ -1,3 +1,7 @@
+### 1.11.6-g (NIMM)
+  - No longer lock history file during use
+  - npm i --global works again
+
 ### 1.11.6-e  (NIMM)
  - implemented persistent history feature
  - merged in better upstream autocomplete WIP (oyyd)

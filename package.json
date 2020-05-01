@@ -1,6 +1,6 @@
 {
   "name": "niim",
-  "version": "1.11.6-e",
+  "version": "1.11.6-g",
   "description": "Node Inspect IMproved",
   "license": "MIT",
   "main": "lib/_inspect.js",
@@ -28,9 +28,7 @@
       ]
     }
   },
-  "dependencies": {
-    "fs-ext": "^2.0.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "eslint": "^6.8.0",
     "nlm": "^3.0.0",
