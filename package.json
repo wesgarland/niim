@@ -1,6 +1,6 @@
 {
   "name": "niim",
-  "version": "1.11.6-d",
+  "version": "1.11.6-e",
   "description": "Node Inspect IMproved",
   "license": "MIT",
   "main": "lib/_inspect.js",

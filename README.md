@@ -36,10 +36,13 @@ barely tested on my machine, let alone yours.  I'm running Node 10.20 on Linux x
 | --port         | Specify the port to use for the node-inspect protocol. Default: auto |
 | --host         | Specify the hostname to use for the node-inspect protocol. Default: localhost |
 
+<br>
 | Environment Variable | Behaviour |
 |:---------------------|:----------|
 | NIIM_CONFIG_FILE     | Specify an additional config file (overlays etc/config) |
-| NIIM_DEFAULT_PORT    | Specify the default port to use for the node-inspect protocol. Default: auto |
+| NIIM_DEFAULT_PORT    | Specify the default port to use for the node-inspect protocol.<br>Default: auto |
+| NIIM_REPL_HISTORY    | Alternative history filename |
+| NIIM_REPL_SIZE       | Override history size |
 
 ### Debugging with niim
 All of the commands from `node-inspect` work as usual.  If you are on an older version

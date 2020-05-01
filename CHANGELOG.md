@@ -1,3 +1,20 @@
+### 1.11.6-e  (NIMM)
+ - implemented persistent history feature
+ - merged in better upstream autocomplete WIP (oyyd)
+ - enabled compatDiconnect by default (disabled was causing orphans)
+
+### 1.11.6-d  (NIMM)
+ - disabled compatDiconnect by default
+
+### 1.11.6-c  (NIMM)
+ - cosmetic only 
+
+### 1.11.6-b  (NIMM)
+ - fixed config file path
+
+### 1.11.6-a  (NIMM)
+ - initial release
+
 ### 1.11.6
 
 * fix: replace the deprecated "repl.cli" with "repl" - **[@oyyd](https://github.com/oyyd)** [#66](https://github.com/nodejs/node-inspect/pull/66)
