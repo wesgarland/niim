@@ -1,22 +1,27 @@
-### 1.11.6-g (NIMM)
+### 1.11.6-h (NIIM)
+  - Better stdin/stdout/stderr mode handling, including stream patches for tty/readline modules. Can now
+    use niim to debug niim.
+  - Configurable stdout/stderr indicators
+
+### 1.11.6-g (NIIM)
   - No longer lock history file during use
   - npm i --global works again
 
-### 1.11.6-e  (NIMM)
+### 1.11.6-e  (NIIM)
  - implemented persistent history feature
  - merged in better upstream autocomplete WIP (oyyd)
  - enabled compatDiconnect by default (disabled was causing orphans)
 
-### 1.11.6-d  (NIMM)
+### 1.11.6-d  (NIIM)
  - disabled compatDiconnect by default
 
-### 1.11.6-c  (NIMM)
- - cosmetic only 
+### 1.11.6-c  (NIIM)
+ - cosmetic only
 
-### 1.11.6-b  (NIMM)
+### 1.11.6-b  (NIIM)
  - fixed config file path
 
-### 1.11.6-a  (NIMM)
+### 1.11.6-a  (NIIM)
  - initial release
 
 ### 1.11.6
