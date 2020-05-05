@@ -15,17 +15,27 @@ our library that unlocks Ethereum keystores. See [Distributed.Computer](https://
 more information if you're curious about that.
 
 ### Major Functional Differences From Node-Inspect
-* Can debug processes that require input on stdin
+* Can debug processes that require input on stdin, including REPLs
 * Avoid startup pause can be disabled by default via config on a per-target basis
 * Use randomized inspect port by default
-* REPL history is maintained
+* REPL history is maintained; inner REPL history is per program name
 
-The plan for version numbers is to track node-inspect, with letter suffixes 
-for disambiguation.
+#### Roadmap
+* Most plans are laid out in the GitHub issue tracker. (Feel free to help out!)
+* I will be tracking changes to node-inpsect; further divergence from node-inspect will be 
+  primarily centered on usability
+* UX issues will help differentiate stdout from stderr, debugger text from debuggee text via
+  colour, improve error messaging, reduce stack trace clutter, etc.
+* The config file should be fairly stable, but will continue to grow settings, particularly
+  those for helping to put niim into certain modes (like "break on uncaught") for specific
+  programs.
+* The plan for version numbers is to track node-inspect, with letter suffixes for disambiguation.
 
 ### Release Status
 This fork is barely past the "proof of concept" stage. Please be aware that it is
-barely tested on my machine, let alone yours.  I'm running Node 10.20 on Linux x86_64.
+barely tested on my machines, let alone yours.  I'm running Node 10.20 on Linux x86_64 and work
+and Node 14 on macOs Catalina at work.  Please let me know if you're using niim and find it
+useful - and feel free to suggest ideas!
 
 ### Launching Niim
 ```niim [options] ‹filename to debug›```
@@ -36,13 +46,6 @@ barely tested on my machine, let alone yours.  I'm running Node 10.20 on Linux x
 | --port         | Specify the port to use for the node-inspect protocol. Default: auto |
 | --host         | Specify the hostname to use for the node-inspect protocol. Default: localhost |
 
-
-| Environment Variable | Behaviour |
-|:---------------------|:----------|
-| NIIM_CONFIG_FILE     | Specify an additional config file (overlays etc/config) |
-| NIIM_DEFAULT_PORT    | Specify the default port to use for the node-inspect protocol.<br>Default: auto |
-| NIIM_REPL_HISTORY    | Alternative history filename |
-| NIIM_REPL_SIZE       | Override history size |
 
 ### Debugging with niim
 All of the commands from `node-inspect` work as usual.  If you are on an older version
@@ -85,7 +88,7 @@ library allows for niim-aware debug targets to interoperate with niim directly.
 |:--------------------|-----------|
 | itm(boolean)        | true - enter interactive terminal mode.<br>false - exit interactive terminal mode. |
 
-#### Configuration Files
+#### Configuration
 niim ships with a niim.config master configuration in the etc/ directory of the package to describe all
 of the configuration options and their defaults. The config files are read in the following order; the
 last file read that sets a given property has precedence:
@@ -94,6 +97,13 @@ last file read that sets a given property has precedence:
  - ~/.niim/config
  - ~/.niim/your-program-name.config
  - filename passed with --config=
+
+| Environment Variable | Behaviour |
+|:---------------------|:----------|
+| NIIM_CONFIG_FILE     | Specify an additional config file (overlays etc/config) |
+| NIIM_DEFAULT_PORT    | Specify the default port to use for the node-inspect protocol.<br>Default: auto |
+| NIIM_REPL_HISTORY    | Alternative history filename |
+| NIIM_REPL_SIZE       | Override history size |
 
 #### Enabling Autostart
 If your work flow does not involve setting breakpoints the moment `niim` launches, you might like to
