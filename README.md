@@ -30,11 +30,13 @@ more information if you're curious about that.
   those for helping to put niim into certain modes (like "break on uncaught") for specific
   programs.
 * The plan for version numbers is to track node-inspect, with letter suffixes for disambiguation.
+* Bugfixes related to core functionality will be implemented in feature branches that should be
+  easy for the main project to merge.
 
 ### Release Status
 This fork is barely past the "proof of concept" stage. Please be aware that it is
-barely tested on my machines, let alone yours.  I'm running Node 10.20 on Linux x86_64 and work
-and Node 14 on macOs Catalina at work.  Please let me know if you're using niim and find it
+barely tested on my machines, let alone yours.  I'm running Node 10.20 on Linux x86_64 atwork
+and Node 14 on macOs Catalina at home.  Please let me know if you're using niim and find it
 useful - and feel free to suggest ideas!
 
 ### Launching Niim
