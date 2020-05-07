@@ -2,6 +2,7 @@
   - Better stdin/stdout/stderr mode handling, including stream patches for tty/readline modules. Can now
     use niim to debug niim.
   - Configurable stdout/stderr indicators
+  - Reduced some excessive stack dump clutter for uninteresting errors
 
 ### 1.11.6-g (NIIM)
   - No longer lock history file during use
