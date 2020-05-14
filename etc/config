@@ -14,5 +14,8 @@
   capturedOutputLeading: {
     stdout: '< ',               /* leading characters before child process' stdout */
     stderr: '< '                /* leading characters before child process' stderr */
-  }
+  },
+  startup: {
+    breakOnUncaught: true,      /* break on uncaught exceptions by default */
+  },
 }
