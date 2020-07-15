@@ -29,7 +29,7 @@ more information if you're curious about that.
 * The config file should be fairly stable, but will continue to grow settings, particularly
   those for helping to put niim into certain modes (like "break on uncaught") for specific
   programs.
-* The plan for version numbers is to track node-inspect, with letter suffixes for disambiguation.
+* Version numbers no longer track node-inspect.
 * Bugfixes related to core functionality will be implemented in feature branches that should be
   easy for the main project to merge.
 
